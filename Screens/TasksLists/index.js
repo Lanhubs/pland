@@ -3,6 +3,7 @@ import React from "react";
 import { styles } from "./Style";
 import { Avatar } from "react-native-paper";
 import userImg from "../../assets/user.png";
+import { CustomHeader } from "./CustomHeader";
 const TasksListScreen = () => {
   return (
     <View
@@ -21,15 +22,6 @@ const TasksListScreen = () => {
   );
 };
 
-const CustomHeader = ({ children }) => (
-  <View style={styles.header}>
-    <View style={styles.mainheader}>
-      <Text>Habeeb Muhammed</Text>
-      <Avatar>
-        <Image source={userImg} />
-      </Avatar>
-    </View>
-  </View>
-);
+
 
 export default TasksListScreen;
