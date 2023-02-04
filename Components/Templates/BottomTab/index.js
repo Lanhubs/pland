@@ -44,7 +44,7 @@ const BottomTab = () => {
           },
           tabBarShowLabel: false,
           tabBarStyle: {
-            height: "15%",
+            height: "10%",
 
           },
           headerShown: false
