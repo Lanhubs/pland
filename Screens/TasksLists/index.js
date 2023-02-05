@@ -33,14 +33,14 @@ const TasksListScreen = () => {
           />
           <TextInput
             style={styles.headerInputElem}
-            maxLength=""
+            
             // left={<Ionicons color="green"  name="search" size={25}/>}
             placeholderTextColor="rgba(0, 0, 0, 0.5)"
             placeholder="search for todo"
           />
           <Pressable style={[styles.dropdownListBtn, {}]}>
-            <FontAwesome5
-              name="range"
+            <Ionicons
+              name="bars-progress"
               color="#fff"
               size={20}
               style={{ marginHorizontal: 10 }}

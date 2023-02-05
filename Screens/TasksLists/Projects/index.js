@@ -1,6 +1,7 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import { styles } from "../Style";
+import { styles as projStyles } from "./Project/style";
 import Project from "./Project";
 import { Headline } from "react-native-paper";
 
@@ -11,10 +12,14 @@ const Projects = () => {
         <Headline style={styles.mainBodyHeaderHeadLine}>Projects</Headline>
         <Text style={styles.mainBodyHeaderPar}>TasksListScreen</Text>
       </View>
-      <View style={styles.projects}>
-        {/* <ScrollView  horizontal={true} accessible={true}>
-
-        </ScrollView> */}
+      <View style={projStyles.projects}>
+        <ScrollView
+          horizontal={true}
+          style={[styles.projectHorizontalScroller, { flex: 1 }]}
+          accessible={true}
+        >
+          <Project />
+        </ScrollView>
       </View>
     </>
   );
