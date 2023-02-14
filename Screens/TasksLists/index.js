@@ -1,13 +1,16 @@
-import { View, Text, Image, TextInput, Button, Pressable } from "react-native";
+import { View, Text, Image, TextInput, Button, Pressable, ScrollView } from "react-native";
 import React from "react";
 import { styles } from "./Style";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { Avatar, Headline, IconButton } from "react-native-paper";
 import userImg from "../../assets/user.png";
 import Projects from "./Projects";
+import Tasks from "./Tasks";
 // import CustomHeader from "./CustomHeader/CustomHeader";
 const TasksListScreen = () => {
   return (
+    <ScrollView alwaysBounceVertical={true}>
+
     <View
       style={[
         styles.mainContainer,
@@ -39,8 +42,8 @@ const TasksListScreen = () => {
             placeholder="search for todo"
           />
           <Pressable style={[styles.dropdownListBtn, {}]}>
-            <Ionicons
-              name="bars-progress"
+            <FontAwesome5
+              name="bars"
               color="#fff"
               size={20}
               style={{ marginHorizontal: 10 }}
@@ -50,13 +53,12 @@ const TasksListScreen = () => {
       </View>
       {/* main body component */}
       <View style={styles.mainBody}>
-        {/* <View style={styles.mainBodyHeader}>
-          <Headline style={styles.mainBodyHeaderHeadLine}>Projects</Headline>
-          <Text style={styles.mainBodyHeaderPar}>TasksListScreen</Text>
-        </View> */}
+       
         <Projects/>
+        <Tasks />
       </View>
     </View>
+    </ScrollView>
     
   );
 };

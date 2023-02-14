@@ -5,21 +5,26 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 15,
     gap: "1rem",
+    flexDirection: "row",
     width: "100%",
   },
   project: {
     width:
-      Dimensions.get("window").width / 2 +
-      Dimensions.get("window").width / 15,
+      Dimensions.get("window").width / 2 + Dimensions.get("window").width / 15,
     borderRadius: "10%",
+    height: "90%",
     padding: 15,
     backgroundColor: "#fff",
-    shadowColor: "",
-    elevation: {
-      outerWidth: 1,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
     },
-    borderWidth: 1,
-    borderColor: "rgba(0, 0, 0, 0.5)",
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 3,
+    marginVertical: 10,
+    marginHorizontal: 10,
   },
   cardPressable: {
     padding: 5,
@@ -31,19 +36,23 @@ export const styles = StyleSheet.create({
     color: "#fff",
     borderRadius: "50%",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   checkoutTaskButton: {
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     borderRadius: 50,
     alignSelf: "flex-end",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "black",
-    
   },
   projectHorizontalScroller: {
     width: "100%",
+    // flexDirection: "row",
+    
+    rowGap: 10,
+    gap: 10,
+
   },
 });

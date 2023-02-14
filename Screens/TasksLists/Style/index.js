@@ -37,17 +37,24 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#f1f1f1",
     marginHorizontal: "auto",
+    
+
     borderRadius: 10,
     height: 50,
     overflow: "hidden",
     position: "absolute",
-    bottom: "-15%",
+    bottom: "-20%",
     left: "5%",
     right: "5%",
     shadowColor: "#000",
-    // shadowOffset: {width: 3, height: 2},
-    // shadowRadius: "50%",
-    elevation:2
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
   },
   headerInputElem: {
     height: "100%",
@@ -76,9 +83,6 @@ export const styles = StyleSheet.create({
     marginHorizontal: "5%",
     alignItems: "center",
   },
-//   projects styles
-projects:{
-   
-
-}
+  //   projects styles
+  projects: {},
 });
