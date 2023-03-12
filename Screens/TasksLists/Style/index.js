@@ -15,8 +15,6 @@ export const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "600",
   },
-  
-
   userImg: {
     width: 70,
     height: 70,
@@ -28,34 +26,30 @@ export const styles = StyleSheet.create({
     
   },
   headerInput: {
-    zIndex: 1000,
     width: '90%',
     alignItems: 'center',
     flexDirection: 'row',
-    backgroundColor: '#f1f1f1',
+    backgroundColor: '#000',
     marginHorizontal: 'auto',
-
     borderRadius: 10,
     height: 50,
     overflow: 'hidden',
     position: 'absolute',
     bottom: '-20%',
-    left: '5%',
-    right: '5%',
-    shadowColor: '#000',
+    /* left: '5%',
+    right: '5%', */
+    shadowColor: 'rgba(0, 0, 0, 0.5)',
     shadowOffset: {
       width: 0,
       height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-
     elevation: 5,
   },
   headerInputElem: {
     height: '100%',
-    flex: 1,
-    borderColor: 'none',
+
   },
   //   main body
   dropdownListBtn: {
@@ -63,7 +57,6 @@ export const styles = StyleSheet.create({
     color: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-
     marginHorizontal: 7,
     height: '70%',
     width: 40,
@@ -86,48 +79,5 @@ export const styles = StyleSheet.create({
 
     flexDirection: 'row',
     width: '100%',
-  },
-  project: {
-    width:
-      Dimensions.get('window').width / 2 + Dimensions.get('window').width / 15,
-    borderRadius: 20,
-    height: '90%',
-    padding: 15,
-    backgroundColor: '#fff',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 3,
-    marginVertical: 10,
-    marginHorizontal: 10,
-  },
-  cardPressable: {
-    padding: 5,
-    margin: 15,
-    fontSize: 25,
-    backgroundColor: 'black',
-    width: 60,
-    height: 60,
-    color: '#fff',
-    borderRadius: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  checkoutTaskButton: {
-    width: 50,
-    height: 50,
-    borderRadius: 50,
-    alignSelf: 'flex-end',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'black',
-  },
-  projectHorizontalScroller: {
-    width: '100%',
-    // flexDirection: "row",
   },
 });
