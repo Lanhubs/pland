@@ -18,7 +18,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 const Projects = () => {
   return (
     <FlatList
-      contentContainerStyle={{padding: 5}}
+      contentContainerStyle={{padding: 5, flex:1}}
       horizontal={true}
       showsHorizontalScrollIndicator={false}
       data={projects} 

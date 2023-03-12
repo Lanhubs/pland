@@ -7,6 +7,7 @@ import {Checkbox} from 'react-native-paper';
 const Tasks = () => {
   return (
     <>
+    
       <View style={style.tasksHeader}>
         <Text style={style.taskTitle}>Tasks</Text>
         <Pressable>
@@ -16,8 +17,9 @@ const Tasks = () => {
       <FlatList
         alwaysBounceVertical={true}
         data={tasks}
+        scrollEnabled={false}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ padding: 5}}
+        contentContainerStyle={{ padding: 5, flex: 1}}
         keyExtractor={(_, index) => String(index)}
         renderItem={({item}) => <Task title={item.title} />}
       />

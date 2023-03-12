@@ -1,33 +1,66 @@
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
-import React from 'react';
-import {styles} from './Style';
-import TaskListBackground from '../../Components/Utils/Backgrounds/TaskListBackground';
-import Header from './Header';
-import HeaderInput from './HeaderInput';
-import Projects from './Projects';
-import Tasks from './Tasks';
-const TasksListScreen = ({navigation}) => {
-  return (
+import { View, Text, Image, TextInput, Button, Pressable, ScrollView } from "react-native";
+import React from "react";
+import { styles } from "./Style";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
-      <SafeAreaView
-        style={{flex: 1, paddingVertical: 20, paddingHorizontal: 15}}>
-        <TaskListBackground />
-        <Header />
-        <HeaderInput />
-        <View
-          style={{
-            marginVertical: 10,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}>
-          <Text style={{fontSize: 17, color: '#000', fontWeight: '500'}}>
-            Projects
-          </Text>
-          <Text style={{fontSize: 14, color: '#000'}}>All tasks</Text>
+
+import { Avatar, Headline, IconButton } from "react-native-paper";
+import userImg from "../../assets/user.png";
+import Projects from "./Projects";
+import Tasks from "./Tasks";
+// import CustomHeader from "./CustomHeader/CustomHeader";
+const TasksListScreen = () => {
+  return (
+    
+    <View
+      style={[
+        styles.mainContainer,
+        {
+          backgroundColor: "#fff",
+          padding: 0,
+          flex: 1,
+        },
+      ]}
+    >
+      <View style={styles.header}>
+        <View style={styles.mainheader}>
+          <Text>Habeeb Muhammed</Text>
+          <Image source={userImg} style={styles.userImg} />
         </View>
-        <Projects />
+
+        <View style={styles.headerInput}>
+          <Ionicons
+            name="search"
+            color="rgba(0, 0, 0, 0.5)"
+            style={{ marginHorizontal: 10 }}
+            size={20}
+          />
+          <TextInput
+            style={styles.headerInputElem}
+            
+            // left={<Ionicons color="green"  name="search" size={25}/>}
+            placeholderTextColor="rgba(0, 0, 0, 0.5)"
+            placeholder="search for todo"
+          />
+          <Pressable style={[styles.dropdownListBtn, {}]}>
+            <FontAwesome5
+              name="bars"
+              color="#fff"
+              size={20}
+              style={{ marginHorizontal: 10 }}
+            />
+          </Pressable>
+        </View>
+      </View>
+      {/* main body component */}
+      <View style={styles.mainBody}>
+       
+        <Projects/>
         <Tasks />
-      </SafeAreaView>
+      </View>
+    </View>
+    
   );
 };
 

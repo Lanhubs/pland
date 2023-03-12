@@ -64,7 +64,6 @@ export const styles = StyleSheet.create({
   },
   mainBody: {
     flex: 1,
-    paddingTop: '1.7rem',
   },
   mainBodyHeader: {
     flexDirection: 'row',
