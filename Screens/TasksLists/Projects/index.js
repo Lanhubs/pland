@@ -25,6 +25,7 @@ const Projects = () => {
       alwaysBounceHorizontal={true}
       scrollEnabled={false}
       keyExtractor={(_, index) => String(index)}
+      
       renderItem={({item}) => (
         <Pressable
           onPress={() => {
