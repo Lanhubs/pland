@@ -16,17 +16,13 @@ import {projects} from './data';
 import {Paragraph, Headline} from 'react-native-paper';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 const Projects = () => {
-  const scrollViewRef = React.useRef(null);
-
+  const [activeIndex, setActiveIndex] = React.useState(0);
   const scrollHandler = ({nativeEvent}) => {
     const {layoutMeasurement, contentOffset} = nativeEvent;
     const contentWidth = layoutMeasurement.width;
     const scrollPosition = contentOffset.x;
     const index = Math.floor(scrollPosition / contentWidth);
-    const projectRef = scrollViewRef.current.refs[`component-${index}`];
-    projectRef.animate({
-      scale: 2,
-    });
+    setActiveIndex(index);
   };
   return (
     <>
@@ -37,40 +33,77 @@ const Projects = () => {
         </Pressable>
       </View>
       <ScrollView
-        // ref={scrollViewRef}
-        style={{/* height: '80%', */ backgroundColor: 'transparent'}}
+        style={{backgroundColor: 'transparent',  flex: 1, flexGrow: 0}}
         horizontal
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         pagingEnabled={true}
-        // onScroll={scrollHandler}
-        >
+        contentContainerStyle={{alignItems: 'flex-end', flexGrow: 0}}
+        onScroll={scrollHandler}
+        snapToInterval={16}
+        scrollEventThrottle={10}>
         {projects.map((item, index) => (
-          
-            <Animated.View
+          <Animated.View
             key={index}
-              // ref={`component-${index}`}
-              style={projectStyles.project}>
-              <Animated.View
-                style={[
-                  StyleSheet.absoluteFillObject,
-                  {
-                    backgroundColor: '#fff',
-                  },
-                ]}
+            animation={activeIndex === index ? 'fadeOut' : undefined}
+            useNativeDriver
+            style={[
+              projectStyles.project,
+              activeIndex === index && projectStyles.activeProject,
+            ]}>
+            <Animated.View
+              style={[
+                StyleSheet.absoluteFillObject,
+                {
+                  backgroundColor:
+                    activeIndex === index ? 'rgba(0,0, 0, 0.8)' : '#f2f2f2',
+                },
+              ]}
+            />
+            <Pressable
+              style={[
+                projectStyles.projectIcon,
+                {
+                  backgroundColor: activeIndex === index ? '#fff' : '#000',
+                },
+              ]}>
+              <AntDesign
+                name={item.iconName}
+                color={activeIndex === index ? '#000' : '#fff'}
+                size={20}
               />
-              <Pressable style={projectStyles.projectIcon}>
-                <AntDesign name={item.iconName} color="#fff" size={20} />
-              </Pressable>
-              <Text style={projectStyles.projectTitle}>{item.task}</Text>
-              <Paragraph style={projectStyles.projectDescription}>
-                {item.description}
-              </Paragraph>
-              <Pressable style={projectStyles.projectCheckOutButton}>
-                <FontAwesome5 name="angle-right" color="#fff" size={25} />
-              </Pressable>
-            </Animated.View>
-         
+            </Pressable>
+            <Text
+              style={[
+                projectStyles.projectTitle,
+                {
+                  textTransform: "capitalize",
+                  color: activeIndex === index ? '#fff' : '#000',
+                },
+              ]}>
+              {item.task}
+            </Text>
+            <Paragraph
+              style={[
+                projectStyles.projectDescription,
+                {
+                  color: activeIndex === index ? '#fff' : '#000',
+                },
+              ]}>
+              {item.description}
+            </Paragraph>
+            <Pressable
+              style={[
+                projectStyles.projectCheckOutButton,
+                {backgroundColor: activeIndex === index ? '#fff' : '#000'},
+              ]}>
+              <FontAwesome5
+                name="angle-right"
+                color={activeIndex === index ? '#000' : '#fff'}
+                size={25}
+              />
+            </Pressable>
+          </Animated.View>
         ))}
       </ScrollView>
     </>
@@ -81,7 +114,7 @@ export default Projects;
 const projectStyles = StyleSheet.create({
   project: {
     width: Dimensions.get('screen').width / 1.7,
-    height: 250,
+    height: 220,
     shadowColor: '#000',
     margin: 10,
     shadowOffset: {
@@ -94,8 +127,9 @@ const projectStyles = StyleSheet.create({
     borderRadius: 30,
 
     marginRight: 20,
-
-    padding: 20,
+    backgroundColor: 'transparent',
+    backfaceVisibility: "hidden",
+    padding: 10,
     overflow: 'hidden',
   },
   projectIcon: {
@@ -124,6 +158,11 @@ const projectStyles = StyleSheet.create({
     backgroundColor: '#000',
     // marginTop: '5%',
     alignItems: 'center',
+    justifyContent: 'center',
+  },
+  activeProject: {
+    height: 280,
+    padding: 20,
     justifyContent: 'center',
   },
 });

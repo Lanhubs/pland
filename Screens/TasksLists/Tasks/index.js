@@ -15,7 +15,7 @@ const Tasks = () => {
           <Text>View all</Text>
         </Pressable>
       </View>
-      <ScrollView showsVerticalScrollIndicator={false} >
+      <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor: "transparent"}}>
         {tasks.filter((item, idx)=>idx <3).map((item, idx) => (
           <Task key={idx} title={item.title} />
         ))}

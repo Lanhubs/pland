@@ -14,7 +14,7 @@ const BottomTab = () => {
   return (
     <Navigator
       sceneAnimationEnabled={true}
-      sceneAnimationType={'shifting'}
+      sceneAnimationType={'fadeOut'}
       barStyle={{animate: true, alignItems: 'center'}}
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, color}) => {
