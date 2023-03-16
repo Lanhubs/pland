@@ -1,28 +1,25 @@
-import {View, Text, Pressable, FlatList} from 'react-native';
+import {View, Text, Pressable, FlatList, ScrollView} from 'react-native';
 import React from 'react';
 import {style} from './style';
 import Octicons from 'react-native-vector-icons/Octicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 import {Checkbox} from 'react-native-paper';
 
 const Tasks = () => {
   return (
     <>
-    
       <View style={style.tasksHeader}>
         <Text style={style.taskTitle}>Tasks</Text>
         <Pressable>
           <Text>View all</Text>
         </Pressable>
       </View>
-      <FlatList
-        alwaysBounceVertical={true}
-        data={tasks}
-        scrollEnabled={false}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ padding: 5, flex: 1}}
-        keyExtractor={(_, index) => String(index)}
-        renderItem={({item}) => <Task title={item.title} />}
-      />
+      <ScrollView showsVerticalScrollIndicator={false} >
+        {tasks.filter((item, idx)=>idx <3).map((item, idx) => (
+          <Task key={idx} title={item.title} />
+        ))}
+      </ScrollView>
     </>
   );
 };
@@ -32,20 +29,39 @@ const Task = ({title}) => {
     <View style={style.task}>
       <Checkbox value="checkbox" />
       <Text style={style.taskTitle}>{title}</Text>
-      <Octicons name="dot-fill" size={10} />
+      <FontAwesome name="angle-right" size={20} />
     </View>
   );
 };
 
-const tasks = [
+export const tasks = [
   {
     title: 'Buy a new laptop',
+    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing ',
+  },
+  {
+    title: 'Buy a new laptop',
+    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing ',
+  },
+  {
+    title: 'Buy a new laptop',
+    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing ',
   },
   {
     title: 'Get new clothes',
+    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing ',
   },
   {
     title: 'Code a software',
+    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing ',
+  },
+  {
+    title: 'Code a software',
+    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing ',
+  },
+  {
+    title: 'Code a software',
+    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing ',
   },
 ];
 export default Tasks;

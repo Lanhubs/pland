@@ -16,44 +16,64 @@ import {projects} from './data';
 import {Paragraph, Headline} from 'react-native-paper';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 const Projects = () => {
+  const scrollViewRef = React.useRef(null);
+
+  const scrollHandler = ({nativeEvent}) => {
+    const {layoutMeasurement, contentOffset} = nativeEvent;
+    const contentWidth = layoutMeasurement.width;
+    const scrollPosition = contentOffset.x;
+    const index = Math.floor(scrollPosition / contentWidth);
+    const projectRef = scrollViewRef.current.refs[`component-${index}`];
+    projectRef.animate({
+      scale: 2,
+    });
+  };
   return (
-    <FlatList
-      contentContainerStyle={{padding: 5, flex:1}}
-      horizontal={true}
-      showsHorizontalScrollIndicator={false}
-      data={projects} 
-      alwaysBounceHorizontal={true}
-      scrollEnabled={false}
-      keyExtractor={(_, index) => String(index)}
-      
-      renderItem={({item}) => (
-        <Pressable
-          onPress={() => {
-            console.log('hello');
-          }}>
-          <View style={projectStyles.project}>
-            <View
-              style={[
-                StyleSheet.absoluteFillObject,
-                {
-                  backgroundColor: '#fff',
-                },
-              ]}
-            />
-            <Pressable style={projectStyles.projectIcon}>
-              <AntDesign name={item.iconName} color="#fff" size={20} />
-            </Pressable>
-            <Text style={projectStyles.projectTitle}>{item.task}</Text>
-            <Paragraph style={projectStyles.projectDescription}>
-              {item.description}
-            </Paragraph>
-            <Pressable style={projectStyles.projectCheckOutButton}>
-              <FontAwesome5 name="angle-right" color="#fff" size={25} />
-            </Pressable>
-          </View>
+    <>
+      <View style={styles.mainBodyHeader}>
+        <Text style={styles.mainBodyHeaderTitle}>Projects</Text>
+        <Pressable>
+          <Text style={styles.mainBodyHeaderViewAllBtnText}>View all</Text>
         </Pressable>
-      )}
-    />
+      </View>
+      <ScrollView
+        // ref={scrollViewRef}
+        style={{/* height: '80%', */ backgroundColor: 'transparent'}}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        pagingEnabled={true}
+        // onScroll={scrollHandler}
+        >
+        {projects.map((item, index) => (
+          
+            <Animated.View
+            key={index}
+              // ref={`component-${index}`}
+              style={projectStyles.project}>
+              <Animated.View
+                style={[
+                  StyleSheet.absoluteFillObject,
+                  {
+                    backgroundColor: '#fff',
+                  },
+                ]}
+              />
+              <Pressable style={projectStyles.projectIcon}>
+                <AntDesign name={item.iconName} color="#fff" size={20} />
+              </Pressable>
+              <Text style={projectStyles.projectTitle}>{item.task}</Text>
+              <Paragraph style={projectStyles.projectDescription}>
+                {item.description}
+              </Paragraph>
+              <Pressable style={projectStyles.projectCheckOutButton}>
+                <FontAwesome5 name="angle-right" color="#fff" size={25} />
+              </Pressable>
+            </Animated.View>
+         
+        ))}
+      </ScrollView>
+    </>
   );
 };
 
@@ -61,8 +81,9 @@ export default Projects;
 const projectStyles = StyleSheet.create({
   project: {
     width: Dimensions.get('screen').width / 1.7,
-    height: 270,
+    height: 250,
     shadowColor: '#000',
+    margin: 10,
     shadowOffset: {
       width: 1,
       height: 1,
@@ -93,7 +114,7 @@ const projectStyles = StyleSheet.create({
   projectDescription: {
     fontSize: 13,
     fontWeight: '300',
-    marginTop: 10,
+    // marginTop: ,
   },
   projectCheckOutButton: {
     alignSelf: 'flex-end',
@@ -101,7 +122,7 @@ const projectStyles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
     backgroundColor: '#000',
-    marginTop: '5%',
+    // marginTop: '5%',
     alignItems: 'center',
     justifyContent: 'center',
   },

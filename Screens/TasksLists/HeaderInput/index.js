@@ -14,8 +14,7 @@ const index = () => {
   return (
     <View style={styles.headerInput}>
       <View style={styles.searchIcon}>
-
-      <Ionicons name="search" size={25} color="rgba(0, 0, 0, 0.5)"  />
+        <Ionicons name="search" size={25} color="rgba(0, 0, 0, 0.5)" />
       </View>
       <TextInput
         placeholder="search"
@@ -30,7 +29,7 @@ const index = () => {
           justifyContent: 'center',
           backgroundColor: '#000',
           borderRadius: 10,
-          marginHorizontal: 5
+          marginHorizontal: 5,
         }}>
         <FontAwesome size={20} color="#fff" name="bars" />
       </Pressable>
@@ -47,10 +46,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: 'hidden',
     flexDirection: 'row',
-    marginTop: Dimensions.get("screen").height/15,
-    alignSelf: "center",
-    width: "97%",
-
+    marginTop: Dimensions.get('screen').height / 15,
+    alignSelf: 'center',
+    width: '97%',
     shadowOffset: {
       width: 1,
       height: 1,
@@ -58,17 +56,16 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    shadowColor: "rgba(0, 0, 0, 0.5)",
-    alignItems: "center",
-    
+    shadowColor: 'rgba(0, 0, 0, 0.5)',
+    alignItems: 'center',
   },
   headerInputElem: {
     flex: 1,
-    fontSize: 16
+    fontSize: 16,
   },
-  searchIcon:{
-    alignItems: "center",
-    justifyContent: "center",
+  searchIcon: {
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 40,
-  }
+  },
 });

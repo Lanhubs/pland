@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
     elevation: 5,
   },
   headerInputElem: {
-    height: '100%',
+    flex: 1,
 
   },
   //   main body
@@ -62,21 +62,26 @@ export const styles = StyleSheet.create({
     width: 40,
     borderRadius: 5,
   },
-  mainBody: {
-    flex: 1,
-  },
+ 
   mainBodyHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: '5%',
+    marginVertical: 10,
     alignItems: 'center',
+  },
+  mainBodyHeaderTitle:{
+    fontSize: 18,
+    color: "#000",
+    fontWeight: "500"
+  },
+  mainBodyHeaderViewAllBtnText:{
+    color: "#000",
+    fontSize: 12,
+    fontWeight: "300"
   },
   //   projects styles
   projects: {
     paddingHorizontal: 10,
     paddingVertical: 15,
-
-    flexDirection: 'row',
-    width: '100%',
   },
 });
