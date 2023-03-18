@@ -56,7 +56,7 @@ const Projects = () => {
                 StyleSheet.absoluteFillObject,
                 {
                   backgroundColor:
-                    activeIndex === index ? 'rgba(0,0, 0, 0.8)' : '#f2f2f2',
+                    activeIndex === index ? '#0e0c0c' : '#f2f2f2',
                 },
               ]}
             />

@@ -16,6 +16,7 @@ const BottomTab = () => {
       sceneAnimationEnabled={true}
       sceneAnimationType={'fadeOut'}
       barStyle={{animate: true, alignItems: 'center'}}
+      initialRouteName="todos"
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, color}) => {
           let iconName;
@@ -24,7 +25,7 @@ const BottomTab = () => {
               iconName = focused ? 'list' : 'list-outline';
               break;
             case 'create-todos':
-              iconName = focused ? 'create' : 'create-outline';
+              iconName = focused ? 'create-outline' : 'create-outline';
               break;
             case 'reminders':
               iconName = focused ? 'notifications' : 'notifications-outline';
